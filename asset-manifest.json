@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/kodanka-web/static/css/main.1826c1b1.css",
-    "main.js": "/kodanka-web/static/js/main.3c9e8b14.js",
-    "static/js/453.23090cdf.chunk.js": "/kodanka-web/static/js/453.23090cdf.chunk.js",
-    "static/media/Supreme-Regular.otf": "/kodanka-web/static/media/Supreme-Regular.dca9d982d756e0e8f846.otf",
-    "static/media/Supreme-Bold.otf": "/kodanka-web/static/media/Supreme-Bold.77ae411e032a78b68fc1.otf",
-    "index.html": "/kodanka-web/index.html",
-    "main.1826c1b1.css.map": "/kodanka-web/static/css/main.1826c1b1.css.map",
-    "main.3c9e8b14.js.map": "/kodanka-web/static/js/main.3c9e8b14.js.map",
-    "453.23090cdf.chunk.js.map": "/kodanka-web/static/js/453.23090cdf.chunk.js.map"
+    "main.css": "./static/css/main.36fa6f51.css",
+    "main.js": "./static/js/main.eb81d7c8.js",
+    "static/js/453.23090cdf.chunk.js": "./static/js/453.23090cdf.chunk.js",
+    "static/media/Supreme-Regular.otf": "./static/media/Supreme-Regular.dca9d982d756e0e8f846.otf",
+    "static/media/Supreme-Bold.otf": "./static/media/Supreme-Bold.77ae411e032a78b68fc1.otf",
+    "index.html": "./index.html",
+    "main.36fa6f51.css.map": "./static/css/main.36fa6f51.css.map",
+    "main.eb81d7c8.js.map": "./static/js/main.eb81d7c8.js.map",
+    "453.23090cdf.chunk.js.map": "./static/js/453.23090cdf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1826c1b1.css",
-    "static/js/main.3c9e8b14.js"
+    "static/css/main.36fa6f51.css",
+    "static/js/main.eb81d7c8.js"
   ]
 }
