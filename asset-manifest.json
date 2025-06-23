@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/kodanka-web/static/css/main.4b2f9751.css",
+    "main.css": "/kodanka-web/static/css/main.1826c1b1.css",
     "main.js": "/kodanka-web/static/js/main.3c9e8b14.js",
     "static/js/453.23090cdf.chunk.js": "/kodanka-web/static/js/453.23090cdf.chunk.js",
+    "static/media/Supreme-Regular.otf": "/kodanka-web/static/media/Supreme-Regular.dca9d982d756e0e8f846.otf",
+    "static/media/Supreme-Bold.otf": "/kodanka-web/static/media/Supreme-Bold.77ae411e032a78b68fc1.otf",
     "index.html": "/kodanka-web/index.html",
-    "main.4b2f9751.css.map": "/kodanka-web/static/css/main.4b2f9751.css.map",
+    "main.1826c1b1.css.map": "/kodanka-web/static/css/main.1826c1b1.css.map",
     "main.3c9e8b14.js.map": "/kodanka-web/static/js/main.3c9e8b14.js.map",
     "453.23090cdf.chunk.js.map": "/kodanka-web/static/js/453.23090cdf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b2f9751.css",
+    "static/css/main.1826c1b1.css",
     "static/js/main.3c9e8b14.js"
   ]
 }
