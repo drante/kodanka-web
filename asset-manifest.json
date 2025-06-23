@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/kodanka-web/static/css/main.4b2f9751.css",
+    "main.js": "/kodanka-web/static/js/main.800f9bd1.js",
+    "static/js/453.23090cdf.chunk.js": "/kodanka-web/static/js/453.23090cdf.chunk.js",
+    "index.html": "/kodanka-web/index.html",
+    "main.4b2f9751.css.map": "/kodanka-web/static/css/main.4b2f9751.css.map",
+    "main.800f9bd1.js.map": "/kodanka-web/static/js/main.800f9bd1.js.map",
+    "453.23090cdf.chunk.js.map": "/kodanka-web/static/js/453.23090cdf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b2f9751.css",
+    "static/js/main.800f9bd1.js"
+  ]
+}
