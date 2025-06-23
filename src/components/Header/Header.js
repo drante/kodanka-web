@@ -18,7 +18,7 @@ export function Header() {
 
         <div className="header__menu">
           <MenuOption
-            icon="/images/icons/mail.svg"
+            icon={`${process.env.PUBLIC_URL}/images/icons/mail.svg`}
             label="contact"
             onClick={() => {
               window.location.href = "mailto:anton@kodanka.se";

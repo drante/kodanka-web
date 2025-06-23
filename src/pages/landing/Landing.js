@@ -5,20 +5,20 @@ export function Landing() {
     <main className="landing-container">
       <div className="landing-content">
         <img
-          src="/images/landing/moodle-logotype.svg"
+          src={`${process.env.PUBLIC_URL}/images/landing/moodle-logotype.svg`}
           alt="Moodle"
           className="moodle-logotype-mobile"
         />
 
         <img
-          src="/images/landing/app-screenshots.png"
+          src={`${process.env.PUBLIC_URL}/images/landing/app-screenshots.png`}
           alt="App screenshots"
           className="image"
         />
 
         <div className="text-content">
           <img
-            src="/images/landing/moodle-logotype.svg"
+            src={`${process.env.PUBLIC_URL}/images/landing/moodle-logotype.svg`}
             alt="Moodle"
             className="moodle-logotype"
           />
@@ -39,7 +39,7 @@ export function Landing() {
             rel="noopener noreferrer"
           >
             <img
-              src="/images/landing/app-store-badge.svg"
+              src={`${process.env.PUBLIC_URL}/images/landing/app-store-badge.svg`}
               alt="Download on the App Store"
               className="app-store-badge"
             />
