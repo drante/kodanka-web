@@ -1,0 +1,46 @@
+.header {
+  position: sticky;
+  top: 0;
+  background: white;
+  opacity: 0.96;
+}
+
+.header__content {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+  padding: 2rem;
+  }
+}
+
+.header__title {
+  font-family: "Supreme-Bold";
+  margin: 0;
+}
+
+.header__menu {
+  display: flex;
+  gap: 48px;
+  font-family: "Supreme-Regular";
+}
+
+.menu-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.menu-option__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.menu-option__label {
+  margin: 0;
+}
