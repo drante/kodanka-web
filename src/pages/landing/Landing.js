@@ -25,9 +25,9 @@ export function Landing() {
 
           <p className="app-description">
             Moodle is the ultimate app for food enthusiasts who want to keep
-            track of their experiences—whether at favorite spots or newly
-            discovered locations. Easily review restaurants and bars you've
-            visited, document your amazing (and not-so-amazing) meals and
+            track of their experiences, whether it being at favorite spots or
+            newly discovered locations. Easily review restaurants and bars
+            you've visited, document your amazing (and not-so-amazing) meals and
             drinks, and use your personal journal to track your reviews and save
             places you want to visit. Additionally it also comes with a map to
             give you a clear overview of all your documented spots!
