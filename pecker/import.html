@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>A packing list shared with Pecker</title>
+  <meta name="description" content="Open this packing list in Pecker, or get Pecker on the App Store.">
+  <meta name="apple-itunes-app" content="app-id=6794667808">
+  <meta property="og:title" content="A packing list shared with Pecker">
+  <meta property="og:description" content="Open it in Pecker to pack from the same list.">
+  <meta property="og:image" content="https://www.kodanka.se/pecker/icon.png">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/pecker/icon.png">
+  <link rel="apple-touch-icon" href="/pecker/icon.png">
+  <style>
+    @font-face { font-family: "Supreme"; src: url("/pecker/fonts/Supreme-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "Supreme"; src: url("/pecker/fonts/Supreme-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+    @font-face { font-family: "Supreme"; src: url("/pecker/fonts/Supreme-Extrabold.otf") format("opentype"); font-weight: 800; font-display: swap; }
+
+    :root {
+      --surface: #F3F5F4;
+      --card: #FFFFFF;
+      --text: #15171A;
+      --secondary: #6E7178;
+      --separator: #E4E6E8;
+      --button: #15171A;
+      --button-text: #FFFFFF;
+      --accent: #94B4D5;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface: #101214;
+        --card: #1C1F22;
+        --text: #F3F5F4;
+        --secondary: #9A9EA5;
+        --separator: #2C3035;
+        --button: #F3F5F4;
+        --button-text: #15171A;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--text);
+      font-family: "Supreme", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      font-size: 17px;
+      line-height: 1.35;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: calc(32px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));
+    }
+
+    .app {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .app img { width: 48px; height: 48px; border-radius: 11px; }
+    .app span { font-weight: 700; }
+
+    .emoji { font-size: 44px; line-height: 1; margin-bottom: 8px; }
+    h1 { font-size: 30px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+    .dates { color: var(--secondary); margin: 6px 0 0; font-size: 15px; }
+    .intro { color: var(--secondary); margin: 16px 0 0; }
+
+    .actions { display: grid; gap: 12px; margin: 28px 0 8px; }
+
+    .button {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 999px;
+    }
+
+    .primary { background: var(--button); color: var(--button-text); }
+    .secondary { background: var(--card); color: var(--text); }
+    .hint { color: var(--secondary); font-size: 14px; text-align: center; margin: 4px 16px 0; }
+
+    .category { margin-top: 32px; }
+    .category h2 { font-size: 20px; font-weight: 700; margin: 0 0 10px; }
+    .section { color: var(--secondary); font-size: 14px; margin: 16px 4px 6px; }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 16px;
+      background: var(--card);
+      border-radius: 22px;
+    }
+
+    li { padding: 13px 0; border-bottom: 1px solid var(--separator); }
+    li:last-child { border-bottom: none; }
+    .units { color: var(--secondary); }
+
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="app">
+      <img src="/pecker/icon.png" alt="">
+      <span>Pecker</span>
+    </div>
+
+    <div id="trip">
+      <div class="emoji" id="trip-emoji" hidden></div>
+      <h1 id="trip-name" data-text="fallbackTitle">A packing list shared with you</h1>
+      <p class="dates" id="trip-dates" hidden></p>
+      <p class="intro" data-text="intro">Open it in Pecker to pack from the same list. Everything starts unpacked.</p>
+    </div>
+
+    <div class="actions">
+      <a class="button primary" id="open" hidden data-text="open">Open in Pecker</a>
+      <a class="button secondary" href="https://apps.apple.com/app/id6794667808" data-text="get">Get Pecker on the App Store</a>
+      <p class="hint" id="install-hint" hidden data-text="hint">Just installed Pecker? Come back here and tap Open in Pecker.</p>
+    </div>
+
+    <div id="categories"></div>
+  </main>
+
+  <script>
+    // The list travels in the fragment, which browsers never send to a server:
+    // it is only ever read here, on the recipient's own device.
+    const strings = {
+      en: {
+        fallbackTitle: "A packing list shared with you",
+        intro: "Open it in Pecker to pack from the same list. Everything starts unpacked.",
+        open: "Open in Pecker",
+        get: "Get Pecker on the App Store",
+        hint: "Just installed Pecker? Come back here and tap Open in Pecker."
+      },
+      sv: {
+        fallbackTitle: "En packlista som delats med dig",
+        intro: "Öppna den i Pecker för att packa efter samma lista. Allt börjar som opackat.",
+        open: "Öppna i Pecker",
+        get: "Hämta Pecker i App Store",
+        hint: "Har du precis installerat Pecker? Kom tillbaka hit och tryck på Öppna i Pecker."
+      },
+      de: {
+        fallbackTitle: "Eine Packliste, die mit dir geteilt wurde",
+        intro: "Öffne sie in Pecker, um nach derselben Liste zu packen. Alles startet ungepackt.",
+        open: "In Pecker öffnen",
+        get: "Pecker im App Store laden",
+        hint: "Pecker gerade installiert? Komm hierher zurück und tippe auf In Pecker öffnen."
+      },
+      fr: {
+        fallbackTitle: "Une liste de bagages partagée avec vous",
+        intro: "Ouvrez-la dans Pecker pour préparer vos bagages avec la même liste. Rien n’est encore rangé.",
+        open: "Ouvrir dans Pecker",
+        get: "Télécharger Pecker sur l’App Store",
+        hint: "Vous venez d’installer Pecker ? Revenez ici et touchez Ouvrir dans Pecker."
+      },
+      es: {
+        fallbackTitle: "Una lista de equipaje compartida contigo",
+        intro: "Ábrela en Pecker para preparar el equipaje con la misma lista. Todo empieza sin guardar.",
+        open: "Abrir en Pecker",
+        get: "Descargar Pecker en el App Store",
+        hint: "¿Acabas de instalar Pecker? Vuelve aquí y toca Abrir en Pecker."
+      }
+    };
+
+    const language = (navigator.languages || [navigator.language])
+      .map((code) => (code || "").slice(0, 2).toLowerCase())
+      .find((code) => strings[code]) || "en";
+
+    const text = strings[language];
+    document.documentElement.lang = language;
+
+    document.querySelectorAll("[data-text]").forEach((element) => {
+      element.textContent = text[element.dataset.text];
+    });
+
+    const payload = location.hash.slice(1);
+    const isAppleTouchDevice = /iPhone|iPad|iPod/.test(navigator.userAgent)
+      || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (payload && isAppleTouchDevice) {
+      const open = document.getElementById("open");
+      open.href = "pecker://import#" + payload;
+      open.hidden = false;
+      document.getElementById("install-hint").hidden = false;
+    }
+
+    function decodeBase64URL(value) {
+      const base64 = value.replace(/-/g, "+").replace(/_/g, "/")
+        + "=".repeat((4 - (value.length % 4)) % 4);
+      return Uint8Array.from(atob(base64), (character) => character.charCodeAt(0));
+    }
+
+    async function readTrip(value) {
+      const stream = new Blob([decodeBase64URL(value)])
+        .stream()
+        .pipeThrough(new DecompressionStream("deflate-raw"));
+
+      return JSON.parse(await new Response(stream).text());
+    }
+
+    // A date without a time is a calendar day, read in the viewer's own zone.
+    function parseDate(value) {
+      if (typeof value !== "string") return null;
+
+      const day = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (day) return new Date(Number(day[1]), Number(day[2]) - 1, Number(day[3]));
+
+      const date = new Date(value);
+      return isNaN(date) ? null : date;
+    }
+
+    function dateText(start, end) {
+      const format = new Intl.DateTimeFormat(language, { day: "numeric", month: "short", year: "numeric" });
+      if (!start) return null;
+      if (end && end > start && format.formatRange) return format.formatRange(start, end);
+      return format.format(start);
+    }
+
+    function element(tag, className, content) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (content !== undefined) node.textContent = content;
+      return node;
+    }
+
+    function renderTrip(trip) {
+      if (typeof trip.n !== "string" || !Array.isArray(trip.c)) return;
+
+      document.getElementById("trip-name").textContent = trip.n;
+      document.title = trip.e ? `${trip.e} ${trip.n} – Pecker` : `${trip.n} – Pecker`;
+
+      if (typeof trip.e === "string") {
+        const emoji = document.getElementById("trip-emoji");
+        emoji.textContent = trip.e;
+        emoji.hidden = false;
+      }
+
+      const dates = dateText(parseDate(trip.d), parseDate(trip.r));
+      if (dates) {
+        const datesElement = document.getElementById("trip-dates");
+        datesElement.textContent = dates;
+        datesElement.hidden = false;
+      }
+
+      const container = document.getElementById("categories");
+
+      for (const category of trip.c) {
+        if (typeof category.n !== "string" || !Array.isArray(category.i)) continue;
+
+        const section = element("section", "category");
+        section.append(element("h2", null, category.e ? `${category.e} ${category.n}` : category.n));
+
+        const sections = Array.isArray(category.s) ? category.s : [];
+        const groups = [null, ...sections.keys()].map((index) => ({
+          title: index === null ? null : sections[index],
+          items: category.i.filter((item) => (item.s ?? null) === index)
+        }));
+
+        for (const group of groups) {
+          if (group.items.length === 0) continue;
+          if (group.title) section.append(element("div", "section", group.title));
+
+          const list = element("ul");
+
+          for (const item of group.items) {
+            if (typeof item.n !== "string") continue;
+
+            const row = element("li");
+            if (Number.isInteger(item.q) && item.q > 0) {
+              row.append(element("span", "units", `${item.q} x `));
+            }
+            row.append(document.createTextNode(item.n));
+            list.append(row);
+          }
+
+          section.append(list);
+        }
+
+        container.append(section);
+      }
+    }
+
+    if (payload && "DecompressionStream" in window) {
+      readTrip(payload).then(renderTrip).catch(() => {});
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["T66MK2FS74.com.antonkallbom.pecker"],
+        "components": [
+          {
+            "/": "/pecker/import",
+            "comment": "A packing list shared from Pecker. The list itself is in the fragment."
+          }
+        ]
+      }
+    ]
+  }
+}
