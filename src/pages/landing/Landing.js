@@ -5,8 +5,8 @@ export function Landing() {
     <main className="landing-container">
       <div className="landing-content">
         <img
-          src={`${process.env.PUBLIC_URL}/images/landing/moodle-logotype.svg`}
-          alt="Moodle"
+          src={`${process.env.PUBLIC_URL}/images/landing/mumsa-logotype.svg`}
+          alt="Mumsa"
           className="moodle-logotype-mobile"
         />
 
@@ -18,13 +18,13 @@ export function Landing() {
 
         <div className="text-content">
           <img
-            src={`${process.env.PUBLIC_URL}/images/landing/moodle-logotype.svg`}
-            alt="Moodle"
+            src={`${process.env.PUBLIC_URL}/images/landing/mumsa-logotype.svg`}
+            alt="Mumsa"
             className="moodle-logotype"
           />
 
           <p className="app-description">
-            Moodle is the ultimate app for food enthusiasts who want to keep
+            Mumsa is the ultimate app for food enthusiasts who want to keep
             track of their experiences, whether it being at favorite spots or
             newly discovered locations. Easily review restaurants and bars
             you've visited, document your amazing (and not-so-amazing) meals and
